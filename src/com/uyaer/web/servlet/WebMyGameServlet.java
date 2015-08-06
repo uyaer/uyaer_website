@@ -1,7 +1,6 @@
 package com.uyaer.web.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -14,6 +13,11 @@ import com.uyaer.web.db.WebProxy;
 import com.uyaer.web.vo.GameVo;
 
 public class WebMyGameServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,6 +39,7 @@ public class WebMyGameServlet extends HttpServlet {
 		}
 		
 		ServletContext application=this.getServletContext();
+		@SuppressWarnings("unchecked")
 		List<GameVo> gameList = (List<GameVo>) application.getAttribute("game_"+lang);
 		if(gameList==null){
 			gameList = WebProxy.getGameList("en".equals(lang));
